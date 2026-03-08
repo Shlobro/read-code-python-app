@@ -1,0 +1,8 @@
+1. High - `add-new-problems-auto-workflow.json`
+Agreed. `Validate difficulty placement` runs before the repo-wide stage node, so telling it to start with `git diff --cached` points it at an empty staged diff during the only pre-review placement check. I changed that prompt to inspect `git diff` plus directly inspected untracked files at that stage, and I explicitly excluded `workflow-preflight.txt` alongside the scratch artifacts.
+
+2. Medium - `add-new-problems-auto-workflow.json`
+Agreed. The guides now require new batch content under `app/src/main/java/com/example/readcode/problems/` with `ProblemSeedData.kt` as the aggregator, but the generation prompts did not tell the model to follow that layout or keep guides in sync. I updated the easy, medium, and hard generation prompts to require batch-file placement under `com.example.readcode.problems`, corresponding `ProblemSeedData.kt` aggregation updates, and developer-guide updates when structure or working guidance changes.
+
+3. Low - `app/src/main/java/com/example/readcode/problems/ProblemSeedDataHard5.kt`
+Agreed. The original decorator-order trace was too close to a strong medium problem once the hard bar is defined as senior-level runtime and language behavior. I kept the problem in the hard batch but rewrote it to test decorator ordering together with `classmethod` descriptor binding, which is a more defensible hard-level runtime behavior question.

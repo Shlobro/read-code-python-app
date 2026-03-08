@@ -1,5 +1,14 @@
 package com.example.readcode
 
+import com.example.readcode.problems.easyProblemsStudents
+import com.example.readcode.problems.easyProblemsStudents1
+import com.example.readcode.problems.generatedProblems1
+import com.example.readcode.problems.hardProblems4
+import com.example.readcode.problems.hardProblems5
+import com.example.readcode.problems.hardProblems6
+import com.example.readcode.problems.mediumProblemsJunior1
+import com.example.readcode.problems.mediumProblemsJunior2
+
 val allProblems = listOf(
     Problem(
         id = "bug_easy",
@@ -543,6 +552,6 @@ val allProblems = listOf(
         options = listOf("in", "has", "exists", "=="),
         answerIndex = 0,
         explanation = "The `in` operator is used to check if a key exists within a dictionary."
-    )
-)
+    ),
+) + hardProblems4 + hardProblems5 + hardProblems6 + easyProblemsStudents1 + easyProblemsStudents + mediumProblemsJunior1 + mediumProblemsJunior2 + generatedProblems1
 

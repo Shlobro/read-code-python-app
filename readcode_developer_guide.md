@@ -5,6 +5,7 @@ ReadCode is an Android app for practicing code-reading skills. Users move throug
 
 ## Root Structure
 - `app/`: Android application module.
+- `add-new-problems-auto-workflow.json`: Workflow that adds problems, runs review/fix passes, and uses repo-wide staging before explicit manual commit review.
 - `gradle/`: Gradle wrapper and version catalog files.
 - `build.gradle.kts`: Top-level Gradle configuration.
 - `settings.gradle.kts`: Module registration and repository setup.
@@ -17,7 +18,8 @@ ReadCode is an Android app for practicing code-reading skills. Users move throug
 - `app/build.gradle.kts`: Android module configuration and dependencies.
 - `app/src/main/java/com/example/readcode/MainActivity.kt`: Activity entry point plus Compose app-state wiring and screen composables.
 - `app/src/main/java/com/example/readcode/ProblemModels.kt`: Problem/domain enums and data models used by the UI flow.
-- `app/src/main/java/com/example/readcode/ProblemSeedData.kt`: Hard-coded seed problem bank (`allProblems`).
+- `app/src/main/java/com/example/readcode/ProblemSeedData.kt`: Aggregates the base inline seed list with imported batch lists into `allProblems`.
+- `app/src/main/java/com/example/readcode/problems/`: Seed-data batch package for learner, junior, hard, and workflow-generated problem lists.
 - `app/src/main/java/com/example/readcode/ui/theme/`: Compose theme definitions for color, typography, and Material setup.
 - `app/src/main/res/`: Android resources such as strings, launcher assets, and XML config.
 
@@ -25,10 +27,16 @@ ReadCode is an Android app for practicing code-reading skills. Users move throug
 - The app currently uses in-memory state with Compose `remember`.
 - Problem completion is tracked locally in memory; there is no persistence layer yet.
 - Screen flow is menu-based rather than Navigation Compose based.
-- Problem definitions are hard-coded seed data in `ProblemSeedData.kt`. A future content system can move these into a local database or remote source.
+- Problem definitions are hard-coded seed data split across `ProblemSeedData*.kt` files and aggregated into `allProblems`. A future content system can move these into a local database or remote source.
 
 ## Working Guidance
 - Keep the user flow simple: problem type, difficulty, problem list, problem detail.
 - Preserve the no-typing interaction model. Answers should remain tap-based multiple choice.
 - Treat language as part of the problem model so the app can later support defaults and per-problem overrides without a structural rewrite.
 - Keep `MainActivity.kt` focused on activity setup and screen-state orchestration; place domain/data concerns in dedicated files.
+- Keep `app/src/main/java/com/example/readcode/ProblemSeedData.kt` as the aggregator, and place batch-file expansion under the `com.example.readcode.problems` subpackage rather than crowding the package root.
+- Keep automated content workflows from committing on their own. Repo-wide staging is currently the available workflow behavior, so commit creation should wait for explicit commit-message approval, and generation should begin only from a clean or otherwise isolated worktree.
+- The automated content workflow now performs a preflight worktree check before generation starts. It should stop and leave `workflow-preflight.txt` with a blocking message if any tracked or untracked paths already exist, including leftover scratch artifacts such as `review.txt` or `fixes-made.txt`.
+- The workflow's difficulty-placement validator runs before the first repo-wide `git add`, so it should inspect `git diff` plus directly inspected untracked files instead of relying on `git diff --cached`.
+- The automated content workflow stages the repo before the first review pass and stages it again after the success-path scratch-file cleanup so the index matches the final accepted worktree. Automated reviewers and fixers should still inspect `git diff --cached` first, then `git diff` for follow-up edits inside the re-review loop, and inspect untracked files directly when `git status --short` reports them, excluding active workflow scratch artifacts such as `review.txt` and `fixes-made.txt`.
+- The re-review loop clears `review.txt` before the post-fix review pass, and the success path deletes `review.txt` and `fixes-made.txt` before the final restage used for manual commit review.
