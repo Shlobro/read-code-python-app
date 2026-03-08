@@ -16,7 +16,7 @@
       "y": -442.0,
       "name": "Review recent changes (initial)",
       "model": "gpt-5.4",
-      "prompt": "A Junior dev straight out of college just made some changes. Use git diff to see these changes and review them. Do not hold back. Do not run the code, just analyze it and provide a review. Also review all the relevant .md guides, are they up to date with the changes and review the updates to the .md files as well? For any issue found, suggest how you would fix it. all your findings must go in review.txt you are running in headless mode and the user cannot see your output at all. so any relevent output put in review.txt. if no issues or errors were found keep review.txt empty. this is part of an automated workflow so if there are no errors for the workflow to keep working you must leave the file empty"
+      "prompt": "A Junior dev straight out of college just made some changes. Use git diff to see these changes and review them. Do not hold back. Do not run the code, just analyze it and provide a review. Also review all the relevant .md guides, are they up to date with the changes and review the updates to the .md files as well? For any issue found, suggest how you would fix it. all your findings must go in review.txt you are running in headless mode and the user cannot see your output at all. so any relevent output put in review.txt. if no issues or errors were found keep review.txt empty. this is part of an automated workflow so if there are no errors for the workflow to keep working you must leave the file empty. you should also take into consideration was the difficulty placement correct if new problems were added."
     },
     {
       "node_type": "create_file",
@@ -33,7 +33,7 @@
       "x": 89.78260869565213,
       "y": -241.1304347826087,
       "name": "Fix reviewed files",
-      "model": "gpt-5.3-codex",
+      "model": "gpt-5.4",
       "prompt": "I asked a junior dev to review the recent changes you can use git diff to see these changes and he put his findings into review.txt. read the review and fix bugs you agree with. either way input into fixes-made.txt a summary of each bug, if you agreed or disagreed and why and if you did something about it what you did."
     },
     {
@@ -52,8 +52,8 @@
       "x": 211.75,
       "y": 141.35,
       "name": "Review recent changes (post-fix)",
-      "model": "gpt-5.3-codex",
-      "prompt": "A junior dev straight out of college made some changes you can view these changes using git diff. reviews that have already been done and fixed are in fixes-made.txt read that file and then do a full review of the changes. Do not hold back. Do not run the code, just analyze it and provide a review. Also review all the relevant .md guides, are they up to date with the changes and review the updates to the .md files as well? For any issue found, suggest how you would fix it. all your findings must go in review.txt you are running in headless mode and the user cannot see your output at all. so any relevent output put in review.txt. if no issues or errors were found keep review.txt empty. this is part of an automated workflow so if there are no errors for the workflow to keep working you must leave the file empty."
+      "model": "gpt-5.4",
+      "prompt": "A junior dev straight out of college made some changes you can view these changes using git diff. reviews that have already been done and fixed are in fixes-made.txt read that file and then do a full review of the changes. Do not hold back. Do not run the code, just analyze it and provide a review. Also review all the relevant .md guides, are they up to date with the changes and review the updates to the .md files as well? For any issue found, suggest how you would fix it. all your findings must go in review.txt you are running in headless mode and the user cannot see your output at all. so any relevent output put in review.txt. if no issues or errors were found keep review.txt empty. this is part of an automated workflow so if there are no errors for the workflow to keep working you must leave the file empty. you should also take into consideration was the difficulty placement correct if new problems were added."
     },
     {
       "node_type": "truncate_file",
@@ -86,19 +86,19 @@
       "node_type": "loop",
       "id": "6bd03f7f-6595-41a1-ae17-808143fc1f5f",
       "label_index": 11,
-      "x": -1733.7249874999993,
-      "y": -0.45394375000002185,
+      "x": -1817.359754232,
+      "y": 405.2105311039358,
       "name": "Loop 11",
       "loop_count": 5
     },
     {
       "id": "578e180a-a718-4a56-abcf-907e8542daeb",
       "label_index": 12,
-      "x": -1384.2501937499997,
-      "y": -235.80616250000003,
-      "name": "LLM 12",
+      "x": -1593.91660294388,
+      "y": -565.471637874724,
+      "name": "Add easy problems",
       "model": "gemini-3-pro-preview",
-      "prompt": "add a new problems to the problem set. one in each category"
+      "prompt": "add a new problems to the problem set. one in each category for the easy mode"
     },
     {
       "node_type": "git_action",
@@ -135,6 +135,42 @@
       "msg_source": "static",
       "commit_msg": "",
       "commit_msg_file": ""
+    },
+    {
+      "node_type": "loop",
+      "id": "3a64493c-c5a8-49f7-b124-721f42f044c2",
+      "label_index": 17,
+      "x": -2640.670937401774,
+      "y": -72.7687033997044,
+      "name": "Loop 17",
+      "loop_count": 5
+    },
+    {
+      "id": "1685ec2d-c92b-41e0-9ff7-5f1583c36bac",
+      "label_index": 18,
+      "x": -1506.415341107001,
+      "y": -404.8299342085638,
+      "name": "Add Medium Problems",
+      "model": "gemini-3-pro-preview",
+      "prompt": "add a new problems to the problem set. one in each category for the Medium mode"
+    },
+    {
+      "id": "e2659f40-6562-464c-b176-4a2179300b6c",
+      "label_index": 19,
+      "x": -1427.9372036070008,
+      "y": -261.638565458564,
+      "name": "Add Hard Proplems",
+      "model": "claude-sonnet-4-6",
+      "prompt": "add a new problems to the problem set. one in each category for the Hard mode"
+    },
+    {
+      "id": "aa854c39-a303-4d7e-a44c-b78e420bb60b",
+      "label_index": 20,
+      "x": -1354.4622396875,
+      "y": -68.20442937499998,
+      "name": "Validate difficulty placement",
+      "model": "claude-sonnet-4-6",
+      "prompt": "out of all the new problems added (you can use git diff to see) make sure they are placed in the correct difficulty. the easy problems are for people learning coding. the medium are for junior devs with a degree. the hard are for senior devs."
     }
   ],
   "connections": [
@@ -177,17 +213,9 @@
       "to": "f7912c49-0f00-430f-9a6d-8db84f1bf6df"
     },
     {
-      "from": "start",
-      "to": "6bd03f7f-6595-41a1-ae17-808143fc1f5f"
-    },
-    {
       "from": "6bd03f7f-6595-41a1-ae17-808143fc1f5f",
       "to": "578e180a-a718-4a56-abcf-907e8542daeb",
       "source_port": "loop"
-    },
-    {
-      "from": "578e180a-a718-4a56-abcf-907e8542daeb",
-      "to": "6bd03f7f-6595-41a1-ae17-808143fc1f5f"
     },
     {
       "from": "6bd03f7f-6595-41a1-ae17-808143fc1f5f",
@@ -205,11 +233,40 @@
     {
       "from": "69e44b83-f90e-40eb-824e-1e9e50f7c35d",
       "to": "9db51ec1-5d2d-425c-a656-19fb2c473400"
+    },
+    {
+      "from": "578e180a-a718-4a56-abcf-907e8542daeb",
+      "to": "1685ec2d-c92b-41e0-9ff7-5f1583c36bac"
+    },
+    {
+      "from": "1685ec2d-c92b-41e0-9ff7-5f1583c36bac",
+      "to": "e2659f40-6562-464c-b176-4a2179300b6c"
+    },
+    {
+      "from": "3a64493c-c5a8-49f7-b124-721f42f044c2",
+      "to": "6bd03f7f-6595-41a1-ae17-808143fc1f5f",
+      "source_port": "loop"
+    },
+    {
+      "from": "start",
+      "to": "3a64493c-c5a8-49f7-b124-721f42f044c2"
+    },
+    {
+      "from": "9db51ec1-5d2d-425c-a656-19fb2c473400",
+      "to": "3a64493c-c5a8-49f7-b124-721f42f044c2"
+    },
+    {
+      "from": "e2659f40-6562-464c-b176-4a2179300b6c",
+      "to": "aa854c39-a303-4d7e-a44c-b78e420bb60b"
+    },
+    {
+      "from": "aa854c39-a303-4d7e-a44c-b78e420bb60b",
+      "to": "6bd03f7f-6595-41a1-ae17-808143fc1f5f"
     }
   ],
-  "node_counter": 16,
+  "node_counter": 20,
   "start_pos": [
-    -2051.800654374999,
-    -52.01902343749997
+    -3106.6423140396387,
+    -70.81696712272068
   ]
 }
