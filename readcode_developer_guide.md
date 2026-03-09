@@ -1,7 +1,7 @@
 # ReadCode Developer Guide
 
 ## Project Purpose
-ReadCode is an Android app for practicing code-reading skills. Users move through menus of problem types and difficulties, then solve multiple-choice programming questions. The current content is Python-only, but the model layer already includes language as part of each problem.
+ReadCode is an Android app for practicing code-reading skills. Users move through menus of problem types and difficulties, then solve tap-based programming challenges. Most types are multiple choice; the Arrange the Code type uses a tap-to-order interaction. The current content is Python-only, but the model layer already includes language as part of each problem.
 
 ## Root Structure
 - `app/`: Android application module.
@@ -16,8 +16,10 @@ ReadCode is an Android app for practicing code-reading skills. Users move throug
 
 ## App Module
 - `app/build.gradle.kts`: Android module configuration and dependencies.
-- `app/src/main/java/com/example/readcode/MainActivity.kt`: Activity entry point plus Compose app-state wiring and screen composables.
-- `app/src/main/java/com/example/readcode/ProblemModels.kt`: Problem/domain enums and data models used by the UI flow.
+- `app/src/main/java/com/example/readcode/MainActivity.kt`: Activity entry point, Compose app-state wiring, menu screens, and shared UI helper composables.
+- `app/src/main/java/com/example/readcode/ProblemScreenComposables.kt`: Problem-solving screen composables (ProblemScreen, CodeBlock, OrderStepsInteraction, ResultCard, AnswerChoice, CodeAnswerChoice).
+- `app/src/main/java/com/example/readcode/AppColors.kt`: Shared internal color constants for the neon dark theme.
+- `app/src/main/java/com/example/readcode/ProblemModels.kt`: Problem/domain enums and data models used by the UI flow. Includes 8 ProblemTypes and optional `correctOrder` field for ORDER_STEPS.
 - `app/src/main/java/com/example/readcode/ProblemSeedData.kt`: Aggregates the base inline seed list with imported batch lists into `allProblems`.
 - `app/src/main/java/com/example/readcode/problems/`: Seed-data batch package for learner, junior, hard, and workflow-generated problem lists.
 - `app/src/main/java/com/example/readcode/ui/theme/`: Compose theme definitions for color, typography, and Material setup.
@@ -31,7 +33,7 @@ ReadCode is an Android app for practicing code-reading skills. Users move throug
 
 ## Working Guidance
 - Keep the user flow simple: problem type, difficulty, problem list, problem detail.
-- Preserve the no-typing interaction model. Answers should remain tap-based multiple choice.
+- Preserve the no-typing interaction model. All answers are tap-based; most types are multiple choice, and new interaction styles (like tap-to-order) are acceptable when they suit the problem type.
 - Treat language as part of the problem model so the app can later support defaults and per-problem overrides without a structural rewrite.
 - Keep `MainActivity.kt` focused on activity setup and screen-state orchestration; place domain/data concerns in dedicated files.
 - Keep `app/src/main/java/com/example/readcode/ProblemSeedData.kt` as the aggregator, and place batch-file expansion under the `com.example.readcode.problems` subpackage rather than crowding the package root.

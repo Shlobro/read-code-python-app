@@ -8,6 +8,7 @@ import com.example.readcode.problems.hardProblems5
 import com.example.readcode.problems.hardProblems6
 import com.example.readcode.problems.mediumProblemsJunior1
 import com.example.readcode.problems.mediumProblemsJunior2
+import com.example.readcode.problems.newTypeProblems1
 
 val allProblems = listOf(
     Problem(
@@ -553,5 +554,5 @@ val allProblems = listOf(
         answerIndex = 0,
         explanation = "The `in` operator is used to check if a key exists within a dictionary."
     ),
-) + hardProblems4 + hardProblems5 + hardProblems6 + easyProblemsStudents1 + easyProblemsStudents + mediumProblemsJunior1 + mediumProblemsJunior2 + generatedProblems1
+) + hardProblems4 + hardProblems5 + hardProblems6 + easyProblemsStudents1 + easyProblemsStudents + mediumProblemsJunior1 + mediumProblemsJunior2 + generatedProblems1 + newTypeProblems1
 

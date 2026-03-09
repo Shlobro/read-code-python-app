@@ -6,7 +6,8 @@ ReadCode is a learning app focused on understanding code rather than writing it.
 - Users choose a problem type first.
 - Users then choose a difficulty level.
 - Users see a list of problems for that type and difficulty.
-- Each problem is multiple choice; users should not need to type answers.
+- All interactions are tap-based; users should never need to type answers.
+- Most problem types are multiple choice. The Arrange the Code type uses a tap-to-order interaction.
 - The list should show whether a problem is complete or incomplete.
 - Users should also be able to jump into a random problem from the current filtered list.
 
@@ -19,6 +20,10 @@ ReadCode is a learning app focused on understanding code rather than writing it.
 - What Is the Output?
 - What Does This Code Do?
 - Fill in the Blank
+- Arrange the Code
+- Complexity Check
+- Variable Trace
+- Match the Output
 
 ## Difficulty Levels
 - Easy
