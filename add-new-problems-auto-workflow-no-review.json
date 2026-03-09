@@ -47,24 +47,6 @@
       "condition_type": "file_empty"
     },
     {
-      "id": "549b43e0-0bac-42d0-b2e5-2258ad063ec5",
-      "label_index": 7,
-      "x": 233.04224999999997,
-      "y": 321.84364281249987,
-      "name": "Review recent changes (post-fix)",
-      "model": "gpt-5.4",
-      "prompt": "A junior dev straight out of college made some changes you can view these changes using git diff. reviews that have already been done and fixed are in fixes-made.txt read that file and then do a full review of the changes. Do not hold back. Do not run the code, just analyze it and provide a review. Also review all the relevant .md guides, are they up to date with the changes and review the updates to the .md files as well? For any issue found, suggest how you would fix it. all your findings must go in review.txt you are running in headless mode and the user cannot see your output at all. so any relevent output put in review.txt. if no issues or errors were found keep review.txt empty. this is part of an automated workflow so if there are no errors for the workflow to keep working you must leave the file empty. you should also take into consideration was the difficulty placement correct if new problems were added."
-    },
-    {
-      "node_type": "truncate_file",
-      "id": "e4fd6dd9-510c-4053-8ad9-aacbd6d3ddec",
-      "label_index": 8,
-      "x": 186.59659782608696,
-      "y": 110.50499999999991,
-      "name": "clear review file",
-      "filename": "review.txt"
-    },
-    {
       "node_type": "delete_file",
       "id": "9bddd400-2604-4109-9c4d-e3b76ccb3c8f",
       "label_index": 9,
@@ -203,10 +185,6 @@
       "source_port": "false"
     },
     {
-      "from": "e4fd6dd9-510c-4053-8ad9-aacbd6d3ddec",
-      "to": "549b43e0-0bac-42d0-b2e5-2258ad063ec5"
-    },
-    {
       "from": "f638bd3a-592d-4fea-b113-50e94acd212d",
       "to": "9bddd400-2604-4109-9c4d-e3b76ccb3c8f",
       "source_port": "true"
@@ -267,10 +245,6 @@
       "to": "1935c40c-69e9-48bb-ad5e-53c2b93df865"
     },
     {
-      "from": "549b43e0-0bac-42d0-b2e5-2258ad063ec5",
-      "to": "1935c40c-69e9-48bb-ad5e-53c2b93df865"
-    },
-    {
       "from": "1935c40c-69e9-48bb-ad5e-53c2b93df865",
       "to": "f638bd3a-592d-4fea-b113-50e94acd212d"
     },
@@ -280,7 +254,7 @@
     },
     {
       "from": "b5b10e91-9e8b-469f-87b4-f3906408084f",
-      "to": "e4fd6dd9-510c-4053-8ad9-aacbd6d3ddec"
+      "to": "9bddd400-2604-4109-9c4d-e3b76ccb3c8f"
     }
   ],
   "node_counter": 22,
