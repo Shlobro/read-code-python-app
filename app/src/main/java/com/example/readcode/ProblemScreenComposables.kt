@@ -267,7 +267,7 @@ internal fun OrderStepsInteraction(
                                 )
                                 Spacer(modifier = Modifier.width(8.dp))
                                 Text(
-                                    options[optionIdx],
+                                    options.getOrElse(optionIdx) { "" },
                                     color = if (revealResult && isCorrectPos) NeonGreen
                                             else if (revealResult && isWrongPos) NeonPink
                                             else Color.White,
@@ -315,7 +315,7 @@ internal fun OrderStepsInteraction(
                                 )
                                 Spacer(modifier = Modifier.width(8.dp))
                                 Text(
-                                    options[optionIdx],
+                                    options.getOrElse(optionIdx) { "" },
                                     color = NeonGreen,
                                     fontFamily = FontFamily.Monospace,
                                     style = MaterialTheme.typography.bodySmall
@@ -352,7 +352,7 @@ internal fun OrderStepsInteraction(
                                 .padding(horizontal = 12.dp, vertical = 10.dp)
                         ) {
                             Text(
-                                options[optionIdx],
+                                options.getOrElse(optionIdx) { "" },
                                 color = Color.White.copy(alpha = 0.85f),
                                 fontFamily = FontFamily.Monospace,
                                 style = MaterialTheme.typography.bodySmall

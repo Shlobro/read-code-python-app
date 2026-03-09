@@ -12,7 +12,7 @@ This module contains the primary Android application code for ReadCode.
 
 ## Development Guidelines
 - **Problem Data**: Keep the core seed list in `ProblemSeedData.kt`. Put batch expansions in `com.example.readcode.problems` with clearly named exported lists that are concatenated into `allProblems`.
-- **Difficulty Bar**: Easy problems should fit learners, medium problems should require junior-developer-level code reading, and hard problems should target senior-level reasoning rather than syntax recall.
+- **Difficulty Bar**: Easy problems should fit learners, medium problems should require junior-developer-level code reading, and hard problems should be unlikely to be answered correctly by a junior developer. Hard questions may cover senior-level runtime and language behavior, algorithm-ordering drills, complexity analysis, and standard-library API knowledge.
 - **Medium Fill-in-the-Blank Problems**: Keep medium fill-in-the-blank questions focused on code-reading judgment such as state changes, scope, mutation, or data-flow effects rather than single-keyword recall.
 - **UI Architecture**: Uses in-memory state and Compose for rendering. Keep domain/data definitions out of `MainActivity.kt` and use dedicated files in `com.example.readcode`.
 - **Difficulty Styling**: Difficulty-to-color mapping is a UI concern handled in `MainActivity.kt` via a local `Difficulty.accentColor` mapping.

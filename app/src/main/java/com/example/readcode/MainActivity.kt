@@ -50,7 +50,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -151,8 +150,8 @@ private fun ReadCodeApp() {
     var revealResult by remember { mutableStateOf(false) }
     var lastAnswerCorrect by remember { mutableStateOf(false) }
     var showConfetti by remember { mutableStateOf(false) }
-    val orderedIndices = remember { mutableStateListOf<Int>() }
-    val poolIndices = remember { mutableStateListOf<Int>() }
+    var orderedIndices by remember { mutableStateOf<List<Int>>(emptyList()) }
+    var poolIndices by remember { mutableStateOf<List<Int>>(emptyList()) }
 
     fun problemsFor(type: ProblemType, difficulty: Difficulty): List<Problem> {
         return allProblems.filter {
@@ -165,10 +164,11 @@ private fun ReadCodeApp() {
         revealResult = false
         lastAnswerCorrect = false
         showConfetti = false
-        orderedIndices.clear()
-        poolIndices.clear()
-        if (problem.type == ProblemType.ORDER_STEPS) {
-            poolIndices.addAll(problem.options.indices.toList().shuffled())
+        orderedIndices = emptyList()
+        poolIndices = if (problem.type == ProblemType.ORDER_STEPS) {
+            problem.options.indices.toList().shuffled()
+        } else {
+            emptyList()
         }
         screenState = ScreenState.SolveProblem(problem, type, difficulty)
     }
@@ -221,20 +221,20 @@ private fun ReadCodeApp() {
                             onAnswerSelected = { if (!revealResult) selectedAnswerIndex = it },
                             onTapFromPool = { idx ->
                                 if (!revealResult) {
-                                    poolIndices.remove(idx)
-                                    orderedIndices.add(idx)
+                                    poolIndices = poolIndices - idx
+                                    orderedIndices = orderedIndices + idx
                                 }
                             },
                             onTapFromOrdered = { idx ->
                                 if (!revealResult) {
-                                    orderedIndices.remove(idx)
-                                    poolIndices.add(idx)
+                                    orderedIndices = orderedIndices - idx
+                                    poolIndices = poolIndices + idx
                                 }
                             },
                             onSubmit = {
                                 if (screen.problem.type == ProblemType.ORDER_STEPS) {
                                     val correct = screen.problem.correctOrder
-                                    lastAnswerCorrect = correct != null && orderedIndices.toList() == correct
+                                    lastAnswerCorrect = correct != null && orderedIndices == correct
                                 } else {
                                     val selected = selectedAnswerIndex ?: return@ProblemScreen
                                     lastAnswerCorrect = selected == screen.problem.answerIndex
@@ -250,10 +250,11 @@ private fun ReadCodeApp() {
                                 revealResult = false
                                 lastAnswerCorrect = false
                                 showConfetti = false
-                                orderedIndices.clear()
-                                poolIndices.clear()
-                                if (screen.problem.type == ProblemType.ORDER_STEPS) {
-                                    poolIndices.addAll(screen.problem.options.indices.toList().shuffled())
+                                orderedIndices = emptyList()
+                                poolIndices = if (screen.problem.type == ProblemType.ORDER_STEPS) {
+                                    screen.problem.options.indices.toList().shuffled()
+                                } else {
+                                    emptyList()
                                 }
                             },
                             onRandom = {
