@@ -152,6 +152,7 @@ private fun ReadCodeApp() {
     var showConfetti by remember { mutableStateOf(false) }
     var orderedIndices by remember { mutableStateOf<List<Int>>(emptyList()) }
     var poolIndices by remember { mutableStateOf<List<Int>>(emptyList()) }
+    var shuffledOptionIndices by remember { mutableStateOf<List<Int>>(emptyList()) }
 
     fun problemsFor(type: ProblemType, difficulty: Difficulty): List<Problem> {
         return allProblems.filter {
@@ -166,6 +167,11 @@ private fun ReadCodeApp() {
         showConfetti = false
         orderedIndices = emptyList()
         poolIndices = if (problem.type == ProblemType.ORDER_STEPS) {
+            problem.options.indices.toList().shuffled()
+        } else {
+            emptyList()
+        }
+        shuffledOptionIndices = if (problem.type != ProblemType.ORDER_STEPS) {
             problem.options.indices.toList().shuffled()
         } else {
             emptyList()
@@ -217,6 +223,7 @@ private fun ReadCodeApp() {
                             lastAnswerCorrect = lastAnswerCorrect,
                             orderedIndices = orderedIndices,
                             poolIndices = poolIndices,
+                            shuffledOptionIndices = shuffledOptionIndices,
                             onBack = { screenState = ScreenState.ProblemMenu(screen.type, screen.difficulty) },
                             onAnswerSelected = { if (!revealResult) selectedAnswerIndex = it },
                             onTapFromPool = { idx ->
@@ -237,7 +244,8 @@ private fun ReadCodeApp() {
                                     lastAnswerCorrect = correct != null && orderedIndices == correct
                                 } else {
                                     val selected = selectedAnswerIndex ?: return@ProblemScreen
-                                    lastAnswerCorrect = selected == screen.problem.answerIndex
+                                    val originalIndex = shuffledOptionIndices.getOrElse(selected) { selected }
+                                    lastAnswerCorrect = originalIndex == screen.problem.answerIndex
                                 }
                                 revealResult = true
                                 if (lastAnswerCorrect) {
@@ -252,6 +260,11 @@ private fun ReadCodeApp() {
                                 showConfetti = false
                                 orderedIndices = emptyList()
                                 poolIndices = if (screen.problem.type == ProblemType.ORDER_STEPS) {
+                                    screen.problem.options.indices.toList().shuffled()
+                                } else {
+                                    emptyList()
+                                }
+                                shuffledOptionIndices = if (screen.problem.type != ProblemType.ORDER_STEPS) {
                                     screen.problem.options.indices.toList().shuffled()
                                 } else {
                                     emptyList()

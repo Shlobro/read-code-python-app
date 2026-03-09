@@ -58,6 +58,7 @@ internal fun ProblemScreen(
     lastAnswerCorrect: Boolean,
     orderedIndices: List<Int>,
     poolIndices: List<Int>,
+    shuffledOptionIndices: List<Int> = emptyList(),
     onBack: () -> Unit,
     onAnswerSelected: (Int) -> Unit,
     onTapFromPool: (Int) -> Unit,
@@ -105,26 +106,30 @@ internal fun ProblemScreen(
                 )
             }
         } else if (problem.type == ProblemType.MATCH_OUTPUT) {
+            val displayCorrectIndex = shuffledOptionIndices.indexOf(problem.answerIndex).takeIf { it >= 0 } ?: problem.answerIndex
             items(problem.options.indices.toList()) { index ->
+                val originalIndex = shuffledOptionIndices.getOrElse(index) { index }
                 CodeAnswerChoice(
-                    code = problem.options[index],
+                    code = problem.options[originalIndex],
                     index = index,
                     selected = selectedAnswerIndex == index,
                     revealResult = revealResult,
-                    isCorrect = index == problem.answerIndex,
-                    isWrongSelection = revealResult && selectedAnswerIndex == index && index != problem.answerIndex,
+                    isCorrect = index == displayCorrectIndex,
+                    isWrongSelection = revealResult && selectedAnswerIndex == index && index != displayCorrectIndex,
                     onClick = { onAnswerSelected(index) }
                 )
             }
         } else {
+            val displayCorrectIndex = shuffledOptionIndices.indexOf(problem.answerIndex).takeIf { it >= 0 } ?: problem.answerIndex
             items(problem.options.indices.toList()) { index ->
+                val originalIndex = shuffledOptionIndices.getOrElse(index) { index }
                 AnswerChoice(
-                    text = problem.options[index],
+                    text = problem.options[originalIndex],
                     index = index,
                     selected = selectedAnswerIndex == index,
                     revealResult = revealResult,
-                    isCorrect = index == problem.answerIndex,
-                    isWrongSelection = revealResult && selectedAnswerIndex == index && index != problem.answerIndex,
+                    isCorrect = index == displayCorrectIndex,
+                    isWrongSelection = revealResult && selectedAnswerIndex == index && index != displayCorrectIndex,
                     onClick = { onAnswerSelected(index) }
                 )
             }
