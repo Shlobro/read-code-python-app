@@ -6,6 +6,10 @@ import com.example.readcode.problems.easyProblemsStudents2
 import com.example.readcode.problems.easyProblemsStudents3
 import com.example.readcode.problems.easyProblemsStudents4
 import com.example.readcode.problems.easyProblemsStudents5
+import com.example.readcode.problems.easyProblemsStudents6
+import com.example.readcode.problems.easyProblemsStudents7
+import com.example.readcode.problems.easyProblemsStudents8
+import com.example.readcode.problems.easyProblemsStudents9
 import com.example.readcode.problems.generatedProblems1
 import com.example.readcode.problems.hardProblems4
 import com.example.readcode.problems.hardProblems5
@@ -14,12 +18,20 @@ import com.example.readcode.problems.hardProblems7
 import com.example.readcode.problems.hardProblems8
 import com.example.readcode.problems.hardProblems9
 import com.example.readcode.problems.hardProblems10
+import com.example.readcode.problems.hardProblems11
+import com.example.readcode.problems.hardProblems12
+import com.example.readcode.problems.hardProblems13
+import com.example.readcode.problems.hardProblems14
 import com.example.readcode.problems.mediumProblemsJunior1
 import com.example.readcode.problems.mediumProblemsJunior2
 import com.example.readcode.problems.mediumProblemsJunior3
 import com.example.readcode.problems.mediumProblemsJunior4
 import com.example.readcode.problems.mediumProblemsJunior5
 import com.example.readcode.problems.mediumProblemsJunior6
+import com.example.readcode.problems.mediumProblemsJunior7
+import com.example.readcode.problems.mediumProblemsJunior8
+import com.example.readcode.problems.mediumProblemsJunior9
+import com.example.readcode.problems.mediumProblemsJunior10
 import com.example.readcode.problems.newTypeProblems1
 
 val allProblems = listOf(
@@ -566,5 +578,5 @@ val allProblems = listOf(
         answerIndex = 0,
         explanation = "The `in` operator is used to check if a key exists within a dictionary."
     ),
-) + hardProblems4 + hardProblems5 + hardProblems6 + hardProblems7 + hardProblems8 + hardProblems9 + hardProblems10 + easyProblemsStudents1 + easyProblemsStudents + easyProblemsStudents2 + easyProblemsStudents3 + easyProblemsStudents4 + easyProblemsStudents5 + mediumProblemsJunior1 + mediumProblemsJunior2 + mediumProblemsJunior3 + mediumProblemsJunior4 + mediumProblemsJunior5 + mediumProblemsJunior6 + generatedProblems1 + newTypeProblems1
+) + hardProblems4 + hardProblems5 + hardProblems6 + hardProblems7 + hardProblems8 + hardProblems9 + hardProblems10 + hardProblems11 + hardProblems12 + hardProblems13 + hardProblems14 + easyProblemsStudents1 + easyProblemsStudents + easyProblemsStudents2 + easyProblemsStudents3 + easyProblemsStudents4 + easyProblemsStudents5 + easyProblemsStudents6 + easyProblemsStudents7 + easyProblemsStudents8 + easyProblemsStudents9 + mediumProblemsJunior1 + mediumProblemsJunior2 + mediumProblemsJunior3 + mediumProblemsJunior4 + mediumProblemsJunior5 + mediumProblemsJunior6 + mediumProblemsJunior7 + mediumProblemsJunior8 + mediumProblemsJunior9 + mediumProblemsJunior10 + generatedProblems1 + newTypeProblems1
 
