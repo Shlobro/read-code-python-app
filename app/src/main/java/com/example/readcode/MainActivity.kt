@@ -251,23 +251,10 @@ private fun ReadCodeApp() {
                                 if (lastAnswerCorrect) {
                                     completionState[screen.problem.id] = true
                                     showConfetti = true
-                                }
-                            },
-                            onRetry = {
-                                selectedAnswerIndex = null
-                                revealResult = false
-                                lastAnswerCorrect = false
-                                showConfetti = false
-                                orderedIndices = emptyList()
-                                poolIndices = if (screen.problem.type == ProblemType.ORDER_STEPS) {
-                                    screen.problem.options.indices.toList().shuffled()
                                 } else {
-                                    emptyList()
-                                }
-                                shuffledOptionIndices = if (screen.problem.type != ProblemType.ORDER_STEPS) {
-                                    screen.problem.options.indices.toList().shuffled()
-                                } else {
-                                    emptyList()
+                                    if (completionState[screen.problem.id] != true) {
+                                        completionState[screen.problem.id] = false
+                                    }
                                 }
                             },
                             onRandom = {
@@ -471,7 +458,7 @@ private fun ProblemMenuScreen(
             )
         }
         items(problems) { problem ->
-            ProblemRow(problem = problem, completed = completionState[problem.id] == true, onClick = { onProblemSelected(problem) })
+            ProblemRow(problem = problem, completionStatus = completionState[problem.id], onClick = { onProblemSelected(problem) })
         }
     }
 }
@@ -549,8 +536,12 @@ internal fun NeonBadge(text: String, color: Color) {
 }
 
 @Composable
-private fun ProblemRow(problem: Problem, completed: Boolean, onClick: () -> Unit) {
-    val accentColor = if (completed) NeonGreen else Color.White.copy(alpha = 0.15f)
+private fun ProblemRow(problem: Problem, completionStatus: Boolean?, onClick: () -> Unit) {
+    val accentColor = when (completionStatus) {
+        true -> NeonGreen
+        false -> NeonPink
+        null -> Color.White.copy(alpha = 0.15f)
+    }
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -564,7 +555,7 @@ private fun ProblemRow(problem: Problem, completed: Boolean, onClick: () -> Unit
             Column(modifier = Modifier.weight(1f)) {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
                     NeonBadge(problem.language.label, NeonCyan)
-                    if (completed) {
+                    if (completionStatus == true) {
                         Box(
                             modifier = Modifier
                                 .background(NeonGreen.copy(alpha = 0.15f), RoundedCornerShape(50))
@@ -572,6 +563,15 @@ private fun ProblemRow(problem: Problem, completed: Boolean, onClick: () -> Unit
                                 .padding(horizontal = 10.dp, vertical = 5.dp)
                         ) {
                             Text("✓ Done", style = MaterialTheme.typography.labelSmall, color = NeonGreen, fontWeight = FontWeight.Bold)
+                        }
+                    } else if (completionStatus == false) {
+                        Box(
+                            modifier = Modifier
+                                .background(NeonPink.copy(alpha = 0.15f), RoundedCornerShape(50))
+                                .border(1.dp, NeonPink.copy(alpha = 0.5f), RoundedCornerShape(50))
+                                .padding(horizontal = 10.dp, vertical = 5.dp)
+                        ) {
+                            Text("✗ Failed", style = MaterialTheme.typography.labelSmall, color = NeonPink, fontWeight = FontWeight.Bold)
                         }
                     }
                 }

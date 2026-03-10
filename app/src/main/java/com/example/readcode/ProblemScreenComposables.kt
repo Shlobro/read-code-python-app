@@ -64,7 +64,6 @@ internal fun ProblemScreen(
     onTapFromPool: (Int) -> Unit,
     onTapFromOrdered: (Int) -> Unit,
     onSubmit: () -> Unit,
-    onRetry: () -> Unit,
     onRandom: () -> Unit
 ) {
     LazyColumn(verticalArrangement = Arrangement.spacedBy(14.dp), contentPadding = PaddingValues(bottom = 32.dp)) {
@@ -164,7 +163,6 @@ internal fun ProblemScreen(
                 ResultCard(
                     correct = lastAnswerCorrect,
                     explanation = problem.explanation,
-                    onRetry = onRetry,
                     onRandom = onRandom,
                     onBack = onBack
                 )
@@ -374,7 +372,6 @@ internal fun OrderStepsInteraction(
 internal fun ResultCard(
     correct: Boolean,
     explanation: String,
-    onRetry: () -> Unit,
     onRandom: () -> Unit,
     onBack: () -> Unit
 ) {
@@ -417,30 +414,16 @@ internal fun ResultCard(
                 lineHeight = 22.sp
             )
             Spacer(modifier = Modifier.height(20.dp))
-            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                Box(
-                    modifier = Modifier
-                        .weight(1f)
-                        .clip(RoundedCornerShape(14.dp))
-                        .background(Color(0xFF1A2A40))
-                        .border(1.dp, NeonCyan.copy(alpha = 0.3f), RoundedCornerShape(14.dp))
-                        .clickable(onClick = onRetry)
-                        .padding(vertical = 14.dp),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text("Retry", fontWeight = FontWeight.Bold, color = NeonCyan)
-                }
-                Box(
-                    modifier = Modifier
-                        .weight(1f)
-                        .clip(RoundedCornerShape(14.dp))
-                        .background(Brush.horizontalGradient(listOf(NeonPurple.copy(alpha = 0.7f), NeonCyan.copy(alpha = 0.7f))))
-                        .clickable(onClick = onRandom)
-                        .padding(vertical = 14.dp),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text("Random", fontWeight = FontWeight.Bold, color = Color.White)
-                }
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(14.dp))
+                    .background(Brush.horizontalGradient(listOf(NeonPurple.copy(alpha = 0.7f), NeonCyan.copy(alpha = 0.7f))))
+                    .clickable(onClick = onRandom)
+                    .padding(vertical = 14.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Text("Random", fontWeight = FontWeight.Bold, color = Color.White)
             }
             Spacer(modifier = Modifier.height(14.dp))
             Text(
