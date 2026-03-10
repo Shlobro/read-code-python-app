@@ -8,7 +8,7 @@ This directory contains the main source code for the ReadCode app.
 - `AppColors.kt`: Shared `internal` color constants (`NeonCyan`, `NeonPurple`, etc.) used across `MainActivity.kt` and `ProblemScreenComposables.kt`.
 - `ProblemModels.kt`: Declares `ProblemType`, `Difficulty`, `Language`, `Problem`, and `ScreenState`. `Problem` includes an optional `correctOrder: List<Int>?` field used by `ORDER_STEPS` problems.
 - `ProblemSeedData.kt`: Declares `allProblems` as the concatenation of the base inline seed list plus imported batch lists. Keep this file as the aggregator and core seed bank rather than a catch-all for new additions.
-- `problems/`: Batch seed-data package for learner, junior, hard, and workflow-generated additions. Its exported lists are imported into `ProblemSeedData.kt`, including the medium junior batches through `ProblemSeedDataMediumJunior25.kt` and the senior-level hard batches through `ProblemSeedDataHard29.kt`.
+- `problems/`: Batch seed-data package for learner, junior, hard, and workflow-generated additions. Its exported lists are imported into `ProblemSeedData.kt`, including easy student batches through `ProblemSeedDataEasyStudents30.kt`, medium junior batches through `ProblemSeedDataMediumJunior30.kt`, and senior-level hard batches through `ProblemSeedDataHard34.kt`.
 - `ui/theme/`: Contains Compose Material theme definitions and typography setup.
 
 ## Problem Types
