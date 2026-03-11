@@ -1,6 +1,7 @@
 
 package com.example.readcode
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -63,6 +64,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -76,7 +78,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ReadCodeTheme {
                 Surface(modifier = Modifier.fillMaxSize(), color = Color.Transparent) {
-                    ReadCodeApp()
+                    ReadCodeApp(context = this)
                 }
             }
         }
@@ -142,9 +144,11 @@ private fun ConfettiOverlay(visible: Boolean) {
 }
 
 @Composable
-private fun ReadCodeApp() {
+private fun ReadCodeApp(context: Context) {
     val defaultLanguage = Language.PYTHON
-    val completionState = remember { mutableStateMapOf<String, Boolean>() }
+    val completionState = remember {
+        mutableStateMapOf<String, Boolean>().also { it.putAll(ProgressRepository.load(context)) }
+    }
     var screenState by remember { mutableStateOf<ScreenState>(ScreenState.TypeMenu) }
     var selectedAnswerIndex by remember { mutableStateOf<Int?>(null) }
     var revealResult by remember { mutableStateOf(false) }
@@ -250,11 +254,13 @@ private fun ReadCodeApp() {
                                 revealResult = true
                                 if (lastAnswerCorrect) {
                                     completionState[screen.problem.id] = true
+                                    ProgressRepository.save(context, screen.problem.id, correct = true)
                                     showConfetti = true
                                 } else {
                                     if (completionState[screen.problem.id] != true) {
                                         completionState[screen.problem.id] = false
                                     }
+                                    ProgressRepository.save(context, screen.problem.id, correct = false)
                                 }
                             },
                             onRandom = {
@@ -590,6 +596,6 @@ private fun ProblemRow(problem: Problem, completionStatus: Boolean?, onClick: ()
 @Composable
 private fun ReadCodePreview() {
     ReadCodeTheme {
-        ReadCodeApp()
+        ReadCodeApp(context = LocalContext.current)
     }
 }

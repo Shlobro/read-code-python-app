@@ -7,6 +7,7 @@ This directory contains the main source code for the ReadCode app.
 - `ProblemScreenComposables.kt`: All composables for the problem-solving screen — `ProblemScreen`, `CodeBlock`, `OrderStepsInteraction`, `ResultCard`, `AnswerChoice`, `CodeAnswerChoice`. Extracted to keep `MainActivity.kt` under 1000 lines.
 - `AppColors.kt`: Shared `internal` color constants (`NeonCyan`, `NeonPurple`, etc.) used across `MainActivity.kt` and `ProblemScreenComposables.kt`.
 - `ProblemModels.kt`: Declares `ProblemType`, `Difficulty`, `Language`, `Problem`, and `ScreenState`. `Problem` includes an optional `correctOrder: List<Int>?` field used by `ORDER_STEPS` problems.
+- `ProgressRepository.kt`: SharedPreferences-backed store for problem completion state. `load(context)` returns a `Map<String, Boolean>` (true = completed, false = attempted-but-failed). `save(context, id, correct)` persists a single result; completing a problem removes it from the failed set.
 - `ProblemSeedData.kt`: Declares `allProblems` as the concatenation of the base inline seed list plus imported batch lists. Keep this file as the aggregator and core seed bank rather than a catch-all for new additions.
 - `problems/`: Batch seed-data package for learner, junior, hard, and workflow-generated additions. Its exported lists are imported into `ProblemSeedData.kt`, including easy student batches through `ProblemSeedDataEasyStudents39.kt`, medium junior batches through `ProblemSeedDataMediumJunior39.kt`, and senior-level hard batches through `ProblemSeedDataHard43.kt`.
 - `ui/theme/`: Contains Compose Material theme definitions and typography setup.
@@ -26,4 +27,4 @@ There are 8 problem types in `ProblemType`:
 - **Difficulty Expectations**: Easy problems should stay learner-friendly, medium problems should demand junior-level code-reading judgment, and hard problems should be unlikely to be answered correctly by a junior developer. Hard questions may cover senior-level runtime and language behavior, algorithm-ordering drills, complexity analysis, and standard-library API knowledge.
 - **Code Size**: Keep each Kotlin code file under 1000 lines. Split by concern before files approach that limit.
 - **UI Separation**: Keep UI-only tokens or mappings (for example, difficulty colors) in UI files rather than in `ProblemModels.kt`.
-- **No Persistence**: Currently, problem completion is tracked in memory.
+- **Persistence**: Problem completion is stored in SharedPreferences via `ProgressRepository`. State is loaded once at app start and written immediately after each answer submission.

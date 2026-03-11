@@ -20,14 +20,15 @@ ReadCode is an Android app for practicing code-reading skills. Users move throug
 - `app/src/main/java/com/example/readcode/ProblemScreenComposables.kt`: Problem-solving screen composables (ProblemScreen, CodeBlock, OrderStepsInteraction, ResultCard, AnswerChoice, CodeAnswerChoice).
 - `app/src/main/java/com/example/readcode/AppColors.kt`: Shared internal color constants for the neon dark theme.
 - `app/src/main/java/com/example/readcode/ProblemModels.kt`: Problem/domain enums and data models used by the UI flow. Includes 8 ProblemTypes and optional `correctOrder` field for ORDER_STEPS.
+- `app/src/main/java/com/example/readcode/ProgressRepository.kt`: SharedPreferences-backed persistence for problem completion state. Tracks completed and attempted-but-failed IDs separately under prefs file `readcode_progress`.
 - `app/src/main/java/com/example/readcode/ProblemSeedData.kt`: Aggregates the base inline seed list with imported batch lists into `allProblems`.
 - `app/src/main/java/com/example/readcode/problems/`: Seed-data batch package for learner, junior, hard, and workflow-generated problem lists, including easy student batches through `ProblemSeedDataEasyStudents39.kt`, medium junior batches through `ProblemSeedDataMediumJunior39.kt`, and senior-level hard batches through `ProblemSeedDataHard44.kt`.
 - `app/src/main/java/com/example/readcode/ui/theme/`: Compose theme definitions for color, typography, and Material setup.
 - `app/src/main/res/`: Android resources such as strings, launcher assets, and XML config.
 
 ## Architecture Notes
-- The app currently uses in-memory state with Compose `remember`.
-- Problem completion is tracked locally in memory; there is no persistence layer yet.
+- The app uses in-memory Compose state backed by `ProgressRepository` for persistence across restarts.
+- Problem completion is stored in SharedPreferences (prefs file `readcode_progress`) via `ProgressRepository`, which tracks completed and attempted-but-failed problem IDs separately.
 - Screen flow is menu-based rather than Navigation Compose based.
 - Problem definitions are hard-coded seed data split across `ProblemSeedData*.kt` files and aggregated into `allProblems`. A future content system can move these into a local database or remote source.
 
