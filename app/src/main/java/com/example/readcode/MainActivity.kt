@@ -4,6 +4,7 @@ package com.example.readcode
 import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.animation.AnimatedContent
@@ -181,6 +182,15 @@ private fun ReadCodeApp(context: Context) {
             emptyList()
         }
         screenState = ScreenState.SolveProblem(problem, type, difficulty)
+    }
+
+    BackHandler(enabled = screenState != ScreenState.TypeMenu) {
+        screenState = when (val s = screenState) {
+            ScreenState.TypeMenu -> ScreenState.TypeMenu
+            is ScreenState.DifficultyMenu -> ScreenState.TypeMenu
+            is ScreenState.ProblemMenu -> ScreenState.DifficultyMenu(s.type)
+            is ScreenState.SolveProblem -> ScreenState.ProblemMenu(s.type, s.difficulty)
+        }
     }
 
     Box(modifier = Modifier.fillMaxSize()) {
