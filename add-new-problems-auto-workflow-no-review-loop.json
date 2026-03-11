@@ -12,29 +12,20 @@
     {
       "id": "78697afb-6e3a-4af6-b595-615970d00e72",
       "label_index": 2,
-      "x": -773.8025,
-      "y": -452.5799999999999,
+      "x": -770.8025,
+      "y": -488.5799999999999,
       "name": "Review recent changes (initial)",
       "model": "gpt-5.4",
       "prompt": "A Junior dev straight out of college just made some changes. Use git diff to see these changes and review them. Do not hold back. Do not run the code, just analyze it and provide a review. Also review all the relevant .md guides, are they up to date with the changes and review the updates to the .md files as well? For any issue found, suggest how you would fix it. all your findings must go in review.txt you are running in headless mode and the user cannot see your output at all. so any relevent output put in review.txt. if no issues or errors were found keep review.txt empty. this is part of an automated workflow so if there are no errors for the workflow to keep working you must leave the file empty. you should also take into consideration was the difficulty placement correct if new problems were added."
     },
     {
-      "node_type": "create_file",
-      "id": "b5ddfbfe-b090-454d-a0b9-c0076e4b98f6",
-      "label_index": 4,
-      "x": -778.0,
-      "y": -243.0,
-      "name": "create response file",
-      "filename": "fixes-made.txt"
-    },
-    {
       "id": "a75ecac2-9507-4e61-b4df-a6af49dff362",
       "label_index": 5,
-      "x": 68.38009525815215,
-      "y": -246.7576722826087,
+      "x": 66.38009525815215,
+      "y": -248.75767228260872,
       "name": "Fix reviewed files",
       "model": "claude-sonnet-4-6",
-      "prompt": "I asked a junior dev to review the recent changes you can use git diff to see these changes and he put his findings into review.txt. read the review and fix bugs you agree with. either way input into fixes-made.txt a summary of each bug, if you agreed or disagreed and why and if you did something about it what you did."
+      "prompt": "I asked a junior dev to review the recent changes you can use git diff to see these changes and he put his findings into review.txt. read the review and fix bugs you agree with."
     },
     {
       "node_type": "conditional",
@@ -56,15 +47,6 @@
       "filename": "review.txt"
     },
     {
-      "node_type": "delete_file",
-      "id": "f7912c49-0f00-430f-9a6d-8db84f1bf6df",
-      "label_index": 10,
-      "x": 820.0,
-      "y": -382.0,
-      "name": "delete response file",
-      "filename": "fixes-made.txt"
-    },
-    {
       "node_type": "loop",
       "id": "6bd03f7f-6595-41a1-ae17-808143fc1f5f",
       "label_index": 11,
@@ -76,11 +58,11 @@
     {
       "id": "578e180a-a718-4a56-abcf-907e8542daeb",
       "label_index": 12,
-      "x": -1593.91660294388,
-      "y": -565.471637874724,
+      "x": -1612.9166029438802,
+      "y": -595.4716378747239,
       "name": "Add easy problems",
       "model": "gemini-3-pro-preview",
-      "prompt": "add a new problems to the problem set. one in each category for the easy mode. easy problems should be for people trying to learn how to code like students doing a degree."
+      "prompt": "add a new problems to the problem set. one in each category for the easy mode. easy problems should be for people trying to learn how to code like students doing a degree. there is a slight trend in some categories that the longest answer is the correct one, make sure this is not the case."
     },
     {
       "node_type": "git_action",
@@ -130,20 +112,20 @@
     {
       "id": "1685ec2d-c92b-41e0-9ff7-5f1583c36bac",
       "label_index": 18,
-      "x": -1507.7378411070008,
-      "y": -398.2174342085638,
+      "x": -1508.7378411070008,
+      "y": -399.2174342085639,
       "name": "Add Medium Problems",
       "model": "gemini-3-pro-preview",
-      "prompt": "add a new problems to the problem set. one in each category for the Medium mode. medium problems should be at the level of a junior dev with a degree."
+      "prompt": "add a new problems to the problem set. one in each category for the Medium mode. medium problems should be at the level of a junior dev with a degree. there is a slight trend in some categories that the longest answer is the correct one, make sure this is not the case."
     },
     {
       "id": "e2659f40-6562-464c-b176-4a2179300b6c",
       "label_index": 19,
-      "x": -1427.9372036070008,
-      "y": -261.638565458564,
+      "x": -1428.9372036070008,
+      "y": -262.638565458564,
       "name": "Add Hard Proplems",
       "model": "gpt-5.4",
-      "prompt": "add a new problems to the problem set. one in each category for the Hard mode. hard problems should be at the level of senior devs with 5+ years of experience"
+      "prompt": "add a new problems to the problem set. one in each category for the Hard mode. hard problems should be at the level of senior devs with 5+ years of experience. there is a slight trend in some categories that the longest answer is the correct one, make sure this is not the case."
     },
     {
       "node_type": "git_action",
@@ -161,8 +143,8 @@
       "node_type": "git_action",
       "id": "b5b10e91-9e8b-469f-87b4-f3906408084f",
       "label_index": 22,
-      "x": 193.29074999999983,
-      "y": -48.66912499999984,
+      "x": 99.29074999999989,
+      "y": -11.669124999999838,
       "name": "Stage all",
       "git_action": "git_add",
       "msg_source": "static",
@@ -171,14 +153,6 @@
     }
   ],
   "connections": [
-    {
-      "from": "c8d10de3-7c63-4d62-9359-16a4d46cf730",
-      "to": "b5ddfbfe-b090-454d-a0b9-c0076e4b98f6"
-    },
-    {
-      "from": "b5ddfbfe-b090-454d-a0b9-c0076e4b98f6",
-      "to": "78697afb-6e3a-4af6-b595-615970d00e72"
-    },
     {
       "from": "f638bd3a-592d-4fea-b113-50e94acd212d",
       "to": "a75ecac2-9507-4e61-b4df-a6af49dff362",
@@ -190,10 +164,6 @@
       "source_port": "true"
     },
     {
-      "from": "9bddd400-2604-4109-9c4d-e3b76ccb3c8f",
-      "to": "f7912c49-0f00-430f-9a6d-8db84f1bf6df"
-    },
-    {
       "from": "6bd03f7f-6595-41a1-ae17-808143fc1f5f",
       "to": "578e180a-a718-4a56-abcf-907e8542daeb",
       "source_port": "loop"
@@ -202,10 +172,6 @@
       "from": "6bd03f7f-6595-41a1-ae17-808143fc1f5f",
       "to": "c8d10de3-7c63-4d62-9359-16a4d46cf730",
       "source_port": "done"
-    },
-    {
-      "from": "f7912c49-0f00-430f-9a6d-8db84f1bf6df",
-      "to": "193d02f9-c834-4d69-a1a6-3c0a6c96779e"
     },
     {
       "from": "193d02f9-c834-4d69-a1a6-3c0a6c96779e",
@@ -255,6 +221,14 @@
     {
       "from": "b5b10e91-9e8b-469f-87b4-f3906408084f",
       "to": "9bddd400-2604-4109-9c4d-e3b76ccb3c8f"
+    },
+    {
+      "from": "c8d10de3-7c63-4d62-9359-16a4d46cf730",
+      "to": "78697afb-6e3a-4af6-b595-615970d00e72"
+    },
+    {
+      "from": "9bddd400-2604-4109-9c4d-e3b76ccb3c8f",
+      "to": "193d02f9-c834-4d69-a1a6-3c0a6c96779e"
     }
   ],
   "node_counter": 22,
