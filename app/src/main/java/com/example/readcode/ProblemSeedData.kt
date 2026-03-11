@@ -41,6 +41,11 @@ import com.example.readcode.problems.easyProblemsStudents37
 import com.example.readcode.problems.easyProblemsStudents38
 import com.example.readcode.problems.easyProblemsStudents39
 import com.example.readcode.problems.easyProblemsStudents40
+import com.example.readcode.problems.easyProblemsStudents41
+import com.example.readcode.problems.easyProblemsStudents42
+import com.example.readcode.problems.easyProblemsStudents43
+import com.example.readcode.problems.easyProblemsStudents44
+import com.example.readcode.problems.easyProblemsStudents45
 import com.example.readcode.problems.generatedProblems1
 import com.example.readcode.problems.hardProblems4
 import com.example.readcode.problems.hardProblems5
@@ -83,6 +88,11 @@ import com.example.readcode.problems.hardProblems41
 import com.example.readcode.problems.hardProblems42
 import com.example.readcode.problems.hardProblems43
 import com.example.readcode.problems.hardProblems44
+import com.example.readcode.problems.hardProblems45
+import com.example.readcode.problems.hardProblems46
+import com.example.readcode.problems.hardProblems47
+import com.example.readcode.problems.hardProblems48
+import com.example.readcode.problems.hardProblems49
 import com.example.readcode.problems.mediumProblemsJunior1
 import com.example.readcode.problems.mediumProblemsJunior2
 import com.example.readcode.problems.mediumProblemsJunior3
@@ -122,6 +132,11 @@ import com.example.readcode.problems.mediumProblemsJunior36
 import com.example.readcode.problems.mediumProblemsJunior37
 import com.example.readcode.problems.mediumProblemsJunior38
 import com.example.readcode.problems.mediumProblemsJunior39
+import com.example.readcode.problems.mediumProblemsJunior40
+import com.example.readcode.problems.mediumProblemsJunior41
+import com.example.readcode.problems.mediumProblemsJunior42
+import com.example.readcode.problems.mediumProblemsJunior43
+import com.example.readcode.problems.mediumProblemsJunior44
 import com.example.readcode.problems.newTypeProblems1
 
 private val unnumberedProblems = listOf(
@@ -668,7 +683,7 @@ private val unnumberedProblems = listOf(
         answerIndex = 0,
         explanation = "The `in` operator is used to check if a key exists within a dictionary."
     ),
-) + hardProblems4 + hardProblems5 + hardProblems6 + hardProblems7 + hardProblems8 + hardProblems9 + hardProblems10 + hardProblems11 + hardProblems12 + hardProblems13 + hardProblems14 + hardProblems15 + hardProblems16 + hardProblems17 + hardProblems18 + hardProblems19 + hardProblems20 + hardProblems21 + hardProblems22 + hardProblems23 + hardProblems24 + hardProblems25 + hardProblems26 + hardProblems27 + hardProblems28 + hardProblems29 + hardProblems30 + hardProblems31 + hardProblems32 + hardProblems33 + hardProblems34 + hardProblems35 + hardProblems36 + hardProblems37 + hardProblems38 + hardProblems39 + hardProblems40 + hardProblems41 + hardProblems42 + hardProblems43 + hardProblems44 + easyProblemsStudents1 + easyProblemsStudents + easyProblemsStudents2 + easyProblemsStudents3 + easyProblemsStudents4 + easyProblemsStudents5 + easyProblemsStudents6 + easyProblemsStudents7 + easyProblemsStudents8 + easyProblemsStudents9 + easyProblemsStudents10 + easyProblemsStudents11 + easyProblemsStudents12 + easyProblemsStudents13 + easyProblemsStudents14 + easyProblemsStudents15 + easyProblemsStudents16 + easyProblemsStudents17 + easyProblemsStudents18 + easyProblemsStudents19 + easyProblemsStudents20 + easyProblemsStudents21 + easyProblemsStudents22 + easyProblemsStudents23 + easyProblemsStudents24 + easyProblemsStudents25 + easyProblemsStudents26 + easyProblemsStudents27 + easyProblemsStudents28 + easyProblemsStudents29 + easyProblemsStudents30 + easyProblemsStudents31 + easyProblemsStudents32 + easyProblemsStudents33 + easyProblemsStudents34 + easyProblemsStudents35 + easyProblemsStudents36 + easyProblemsStudents37 + easyProblemsStudents38 + easyProblemsStudents39 + mediumProblemsJunior1 + mediumProblemsJunior2 + mediumProblemsJunior3 + mediumProblemsJunior4 + mediumProblemsJunior5 + mediumProblemsJunior6 + mediumProblemsJunior7 + mediumProblemsJunior8 + mediumProblemsJunior9 + mediumProblemsJunior10 + mediumProblemsJunior11 + mediumProblemsJunior12 + mediumProblemsJunior13 + mediumProblemsJunior14 + mediumProblemsJunior15 + mediumProblemsJunior16 + mediumProblemsJunior17 + mediumProblemsJunior18 + mediumProblemsJunior19 + mediumProblemsJunior20 + mediumProblemsJunior21 + mediumProblemsJunior22 + mediumProblemsJunior23 + mediumProblemsJunior24 + mediumProblemsJunior25 + mediumProblemsJunior26 + mediumProblemsJunior27 + mediumProblemsJunior28 + mediumProblemsJunior29 + mediumProblemsJunior30 + mediumProblemsJunior31 + mediumProblemsJunior32 + mediumProblemsJunior33 + mediumProblemsJunior34 + mediumProblemsJunior35 + mediumProblemsJunior36 + mediumProblemsJunior37 + mediumProblemsJunior38 + mediumProblemsJunior39 + generatedProblems1 + newTypeProblems1 + easyProblemsStudents40
+) + hardProblems4 + hardProblems5 + hardProblems6 + hardProblems7 + hardProblems8 + hardProblems9 + hardProblems10 + hardProblems11 + hardProblems12 + hardProblems13 + hardProblems14 + hardProblems15 + hardProblems16 + hardProblems17 + hardProblems18 + hardProblems19 + hardProblems20 + hardProblems21 + hardProblems22 + hardProblems23 + hardProblems24 + hardProblems25 + hardProblems26 + hardProblems27 + hardProblems28 + hardProblems29 + hardProblems30 + hardProblems31 + hardProblems32 + hardProblems33 + hardProblems34 + hardProblems35 + hardProblems36 + hardProblems37 + hardProblems38 + hardProblems39 + hardProblems40 + hardProblems41 + hardProblems42 + hardProblems43 + hardProblems44 + hardProblems45 + hardProblems46 + hardProblems47 + hardProblems48 + hardProblems49 + easyProblemsStudents1 + easyProblemsStudents + easyProblemsStudents2 + easyProblemsStudents3 + easyProblemsStudents4 + easyProblemsStudents5 + easyProblemsStudents6 + easyProblemsStudents7 + easyProblemsStudents8 + easyProblemsStudents9 + easyProblemsStudents10 + easyProblemsStudents11 + easyProblemsStudents12 + easyProblemsStudents13 + easyProblemsStudents14 + easyProblemsStudents15 + easyProblemsStudents16 + easyProblemsStudents17 + easyProblemsStudents18 + easyProblemsStudents19 + easyProblemsStudents20 + easyProblemsStudents21 + easyProblemsStudents22 + easyProblemsStudents23 + easyProblemsStudents24 + easyProblemsStudents25 + easyProblemsStudents26 + easyProblemsStudents27 + easyProblemsStudents28 + easyProblemsStudents29 + easyProblemsStudents30 + easyProblemsStudents31 + easyProblemsStudents32 + easyProblemsStudents33 + easyProblemsStudents34 + easyProblemsStudents35 + easyProblemsStudents36 + easyProblemsStudents37 + easyProblemsStudents38 + easyProblemsStudents39 + mediumProblemsJunior1 + mediumProblemsJunior2 + mediumProblemsJunior3 + mediumProblemsJunior4 + mediumProblemsJunior5 + mediumProblemsJunior6 + mediumProblemsJunior7 + mediumProblemsJunior8 + mediumProblemsJunior9 + mediumProblemsJunior10 + mediumProblemsJunior11 + mediumProblemsJunior12 + mediumProblemsJunior13 + mediumProblemsJunior14 + mediumProblemsJunior15 + mediumProblemsJunior16 + mediumProblemsJunior17 + mediumProblemsJunior18 + mediumProblemsJunior19 + mediumProblemsJunior20 + mediumProblemsJunior21 + mediumProblemsJunior22 + mediumProblemsJunior23 + mediumProblemsJunior24 + mediumProblemsJunior25 + mediumProblemsJunior26 + mediumProblemsJunior27 + mediumProblemsJunior28 + mediumProblemsJunior29 + mediumProblemsJunior30 + mediumProblemsJunior31 + mediumProblemsJunior32 + mediumProblemsJunior33 + mediumProblemsJunior34 + mediumProblemsJunior35 + mediumProblemsJunior36 + mediumProblemsJunior37 + mediumProblemsJunior38 + mediumProblemsJunior39 + mediumProblemsJunior40 + mediumProblemsJunior41 + mediumProblemsJunior42 + mediumProblemsJunior43 + mediumProblemsJunior44 + generatedProblems1 + newTypeProblems1 + easyProblemsStudents40 + easyProblemsStudents41 + easyProblemsStudents42 + easyProblemsStudents43 + easyProblemsStudents44 + easyProblemsStudents45
 
 val allProblems: List<Problem> = unnumberedProblems.mapIndexed { index, problem ->
     problem.copy(number = index + 1)
