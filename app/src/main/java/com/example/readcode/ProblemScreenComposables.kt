@@ -43,6 +43,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.IntOffset
@@ -197,8 +198,7 @@ internal fun CodeBlock(code: String) {
                 Text("python", style = MaterialTheme.typography.labelSmall, color = Color.White.copy(alpha = 0.35f))
             }
             Text(
-                text = code,
-                color = Color(0xFFE2EDFF),
+                text = highlightPython(code),
                 fontFamily = FontFamily.Monospace,
                 style = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier.padding(16.dp)
@@ -269,11 +269,15 @@ internal fun OrderStepsInteraction(
                                     modifier = Modifier.width(20.dp)
                                 )
                                 Spacer(modifier = Modifier.width(8.dp))
+                                val lineText = options.getOrElse(optionIdx) { "" }
                                 Text(
-                                    options.getOrElse(optionIdx) { "" },
-                                    color = if (revealResult && isCorrectPos) NeonGreen
-                                            else if (revealResult && isWrongPos) NeonPink
-                                            else Color.White,
+                                    text = if (revealResult) AnnotatedString(lineText)
+                                           else highlightPython(lineText),
+                                    color = when {
+                                        revealResult && isCorrectPos -> NeonGreen
+                                        revealResult && isWrongPos   -> NeonPink
+                                        else                          -> Color.Unspecified
+                                    },
                                     fontFamily = FontFamily.Monospace,
                                     style = MaterialTheme.typography.bodySmall,
                                     modifier = Modifier.weight(1f)
@@ -355,8 +359,7 @@ internal fun OrderStepsInteraction(
                                 .padding(horizontal = 12.dp, vertical = 10.dp)
                         ) {
                             Text(
-                                options.getOrElse(optionIdx) { "" },
-                                color = Color.White.copy(alpha = 0.85f),
+                                text = highlightPython(options.getOrElse(optionIdx) { "" }),
                                 fontFamily = FontFamily.Monospace,
                                 style = MaterialTheme.typography.bodySmall
                             )
@@ -588,13 +591,17 @@ internal fun CodeAnswerChoice(
                     fontSize = 12.sp
                 )
             }
+            val codeText = when {
+                revealResult && isCorrect  -> AnnotatedString(code)
+                isWrongSelection           -> AnnotatedString(code)
+                else                       -> highlightPython(code)
+            }
             Text(
-                text = code,
+                text = codeText,
                 color = when {
                     revealResult && isCorrect -> NeonGreen
-                    isWrongSelection -> NeonPink
-                    selected -> Color(0xFFE2EDFF)
-                    else -> Color(0xFFE2EDFF).copy(alpha = 0.7f)
+                    isWrongSelection          -> NeonPink
+                    else                      -> Color.Unspecified
                 },
                 fontFamily = FontFamily.Monospace,
                 style = MaterialTheme.typography.bodySmall,
