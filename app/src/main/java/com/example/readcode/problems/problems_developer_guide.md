@@ -4,9 +4,9 @@ This package contains seed-data batch files that are imported into `ProblemSeedD
 
 ## Structure
 - `ProblemSeedDataLearner1.kt`: Starter-track batches for students and junior developers (`easyProblemsStudents1`, `mediumProblemsJunior1`).
-- `ProblemSeedDataEasyStudents.kt`, `ProblemSeedDataEasyStudents2.kt` through `ProblemSeedDataEasyStudents34.kt`: Additional easy learner/student batches (`easyProblemsStudents`, `easyProblemsStudents2` through `easyProblemsStudents34`).
-- `ProblemSeedDataMediumJunior2.kt` through `ProblemSeedDataMediumJunior35.kt`: Additional medium junior-developer batches (`mediumProblemsJunior2` through `mediumProblemsJunior35`). Note: some individual problems within these batches are marked `Difficulty.HARD` when the question relies on language-internal gotchas (e.g., mutable default arguments, late-binding closures, hash equality) rather than ordinary junior-level reasoning.
-- `ProblemSeedDataHard4.kt` through `ProblemSeedDataHard39.kt`: Hard-difficulty senior-level batches.
+- `ProblemSeedDataEasyStudents.kt`, `ProblemSeedDataEasyStudents2.kt` through `ProblemSeedDataEasyStudents39.kt`: Additional easy learner/student batches (`easyProblemsStudents`, `easyProblemsStudents2` through `easyProblemsStudents39`).
+- `ProblemSeedDataMediumJunior2.kt` through `ProblemSeedDataMediumJunior39.kt`: Additional medium junior-developer batches (`mediumProblemsJunior2` through `mediumProblemsJunior39`). Note: some individual problems within these batches are marked `Difficulty.HARD` when the question relies on language-internal gotchas (e.g., mutable default arguments, late-binding closures, hash equality) rather than ordinary junior-level reasoning.
+- `ProblemSeedDataHard4.kt` through `ProblemSeedDataHard44.kt`: Hard-difficulty senior-level batches.
 - `ProblemSeedDataGenerated1.kt`: Mixed-difficulty workflow-generated expansion batch (`generatedProblems1`).
 - `ProblemSeedDataNewTypes1.kt`: First batch for the four new problem types — `ORDER_STEPS`, `COMPLEXITY`, `TRACE_VAR`, `MATCH_OUTPUT` — covering easy, medium, and hard difficulties.
 
