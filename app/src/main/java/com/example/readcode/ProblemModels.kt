@@ -23,6 +23,8 @@ enum class Language(val label: String) {
 
 data class Problem(
     val id: String,
+    // Global sequential number assigned at aggregation time. Stable within allProblems ordering.
+    val number: Int = 0,
     val language: Language,
     val type: ProblemType,
     val difficulty: Difficulty,

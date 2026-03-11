@@ -570,7 +570,7 @@ private fun ProblemRow(problem: Problem, completionStatus: Boolean?, onClick: ()
         Row(verticalAlignment = Alignment.CenterVertically) {
             Column(modifier = Modifier.weight(1f)) {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
-                    NeonBadge(problem.language.label, NeonCyan)
+                    NeonBadge("#${problem.number}", NeonCyan.copy(alpha = 0.7f))
                     if (completionStatus == true) {
                         Box(
                             modifier = Modifier

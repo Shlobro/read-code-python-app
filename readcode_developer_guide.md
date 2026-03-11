@@ -31,6 +31,7 @@ ReadCode is an Android app for practicing code-reading skills. Users move throug
 - Problem completion is stored in SharedPreferences (prefs file `readcode_progress`) via `ProgressRepository`, which tracks completed and attempted-but-failed problem IDs separately.
 - Screen flow is menu-based rather than Navigation Compose based.
 - Problem definitions are hard-coded seed data split across `ProblemSeedData*.kt` files and aggregated into `allProblems`. A future content system can move these into a local database or remote source.
+- Each `Problem` has a `number` field (1-based integer) assigned at aggregation time in `ProblemSeedData.kt` via `mapIndexed`. Seed files leave `number` at its default of 0; only `allProblems` carries the real numbers. Numbers are global and stable within the `allProblems` ordering — adding new batches at the end preserves existing numbers. Users see the number as `#N` in the problem list and screen header; developers can use it to reference specific problems in bug reports.
 
 ## Working Guidance
 - Keep the user flow simple: problem type, difficulty, problem list, problem detail.

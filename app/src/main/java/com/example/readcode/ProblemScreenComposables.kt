@@ -70,7 +70,7 @@ internal fun ProblemScreen(
     LazyColumn(verticalArrangement = Arrangement.spacedBy(14.dp), contentPadding = PaddingValues(bottom = 32.dp)) {
         item {
             NeonBackHeader(
-                overline = "${problem.language.label}  ·  ${problem.type.label}  ·  ${problem.difficulty.label}",
+                overline = "#${problem.number}  ·  ${problem.language.label}  ·  ${problem.type.label}  ·  ${problem.difficulty.label}",
                 title = problem.title,
                 body = problem.summary,
                 onBack = onBack
