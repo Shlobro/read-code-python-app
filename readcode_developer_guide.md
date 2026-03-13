@@ -22,7 +22,7 @@ ReadCode is an Android app for practicing code-reading skills. Users move throug
 - `app/src/main/java/com/example/readcode/ProblemModels.kt`: Problem/domain enums and data models used by the UI flow. Includes 8 ProblemTypes and optional `correctOrder` field for ORDER_STEPS.
 - `app/src/main/java/com/example/readcode/ProgressRepository.kt`: SharedPreferences-backed persistence for problem completion state. Tracks completed and attempted-but-failed IDs separately under prefs file `readcode_progress`.
 - `app/src/main/java/com/example/readcode/ProblemSeedData.kt`: Aggregates the base inline seed list with imported batch lists into `allProblems`.
-- `app/src/main/java/com/example/readcode/problems/`: Seed-data batch package for learner, junior, hard, and workflow-generated problem lists, including easy student batches through `ProblemSeedDataEasyStudents45.kt`, medium junior batches through `ProblemSeedDataMediumJunior44.kt`, and senior-level hard batches through `ProblemSeedDataHard49.kt`.
+- `app/src/main/java/com/example/readcode/problems/`: Seed-data batch package for learner, junior, hard, and workflow-generated problem lists, including easy student batches through `ProblemSeedDataEasyStudents48.kt`, medium junior batches through `ProblemSeedDataMediumJunior47.kt`, and senior-level hard batches through `ProblemSeedDataHard52.kt`.
 - `app/src/main/java/com/example/readcode/ui/theme/`: Compose theme definitions for color, typography, and Material setup.
 - `app/src/main/res/`: Android resources such as strings, launcher assets, and XML config.
 

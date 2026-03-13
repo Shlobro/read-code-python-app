@@ -58,8 +58,8 @@
     {
       "id": "578e180a-a718-4a56-abcf-907e8542daeb",
       "label_index": 12,
-      "x": -1612.9166029438802,
-      "y": -595.4716378747239,
+      "x": -1671.0380373321223,
+      "y": -610.7667521874193,
       "name": "Add easy problems",
       "model": "gemini-3-pro-preview",
       "prompt": "add a new problems to the problem set. one in each category for the easy mode. easy problems should be for people trying to learn how to code like students doing a degree. there is a slight trend in some categories that the longest answer is the correct one, make sure this is not the case."
@@ -104,16 +104,16 @@
       "node_type": "loop",
       "id": "3a64493c-c5a8-49f7-b124-721f42f044c2",
       "label_index": 17,
-      "x": -2614.6709374017737,
-      "y": -35.76870339970441,
+      "x": -2342.417902635798,
+      "y": -66.358932025095,
       "name": "Loop 17",
       "loop_count": 5
     },
     {
       "id": "1685ec2d-c92b-41e0-9ff7-5f1583c36bac",
       "label_index": 18,
-      "x": -1508.7378411070008,
-      "y": -399.2174342085639,
+      "x": -860.2249942487199,
+      "y": -402.27645707110287,
       "name": "Add Medium Problems",
       "model": "gemini-3-pro-preview",
       "prompt": "add a new problems to the problem set. one in each category for the Medium mode. medium problems should be at the level of a junior dev with a degree. there is a slight trend in some categories that the longest answer is the correct one, make sure this is not the case."
