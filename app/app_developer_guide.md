@@ -6,7 +6,7 @@ This module contains the primary Android application code for ReadCode.
 - `src/main/java/com/example/readcode/MainActivity.kt`: Activity entry point, Compose navigation state, and screen rendering logic.
 - `src/main/java/com/example/readcode/ProblemModels.kt`: Shared enums and data models (`ProblemType`, `Difficulty`, `Language`, `Problem`, `ScreenState`).
 - `src/main/java/com/example/readcode/ProblemSeedData.kt`: Aggregates the core inline seed list with batch lists imported from `com.example.readcode.problems`.
-- `src/main/java/com/example/readcode/problems/`: Seed-data batch files grouped by learner, junior, hard, and workflow-generated content, including easy student expansion batches through `ProblemSeedDataEasyStudents69.kt`, medium junior expansion batches through `ProblemSeedDataMediumJunior68.kt`, and senior-level hard expansion batches through `ProblemSeedDataHard72.kt`.
+- `src/main/java/com/example/readcode/problems/`: Seed-data batch files grouped by learner, junior, hard, and workflow-generated content, including easy student expansion batches through `ProblemSeedDataEasyStudents74.kt`, medium junior expansion batches through `ProblemSeedDataMediumJunior73.kt`, and senior-level hard expansion batches through `ProblemSeedDataHard77.kt`.
 - **Answer Design**: For multiple-choice problem additions, avoid making the correct choice consistently identifiable by answer length. Vary both the correct-option position and how concise the correct wording is.
 - `src/main/java/com/example/readcode/ui/theme/`: Contains Compose Material theme definitions and typography setup.
 - `src/main/res/`: Standard Android resources (icons, strings).
