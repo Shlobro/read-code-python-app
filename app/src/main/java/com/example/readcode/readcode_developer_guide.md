@@ -10,7 +10,7 @@ This directory contains the main source code for the ReadCode app.
 - `ProgressRepository.kt`: SharedPreferences-backed store for problem completion state. `load(context)` returns a `Map<String, Boolean>` (true = completed, false = attempted-but-failed). `save(context, id, correct)` persists a single result; completing a problem removes it from the failed set.
 - `PythonSyntaxHighlighter.kt`: Provides `highlightPython(code: String): AnnotatedString` — a pure-Kotlin tokeniser that applies IDE-style colours (keywords, builtins, strings, comments, numbers, operators) to Python source text. Used by `CodeBlock`, `CodeAnswerChoice`, and `OrderStepsInteraction`.
 - `ProblemSeedData.kt`: Declares `allProblems` as the concatenation of the base inline seed list plus imported batch lists. Keep this file as the aggregator and core seed bank rather than a catch-all for new additions.
-- `problems/`: Batch seed-data package for learner, junior, hard, and workflow-generated additions. Its exported lists are imported into `ProblemSeedData.kt`, including easy student batches through `ProblemSeedDataEasyStudents64.kt`, medium junior batches through `ProblemSeedDataMediumJunior63.kt`, and senior-level hard batches through `ProblemSeedDataHard67.kt`.
+- `problems/`: Batch seed-data package for learner, junior, hard, and workflow-generated additions. Its exported lists are imported into `ProblemSeedData.kt`, including easy student batches through `ProblemSeedDataEasyStudents69.kt`, medium junior batches through `ProblemSeedDataMediumJunior68.kt`, and senior-level hard batches through `ProblemSeedDataHard72.kt`.
 - `ui/theme/`: Contains Compose Material theme definitions and typography setup.
 
 ## Problem Types
